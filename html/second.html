@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/second.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar">
+        <div class="first">
+          <div>
+            <img
+              src="https://www.pngall.com/wp-content/uploads/4/Exclamation-Mark-Symbol-PNG.png"
+              alt=""
+              height="40"
+            />
+            <h1>Kina Ne Budet</h1>
+          </div>
+        </div>
+        <div class="second">
+          <span id="showAdminFormBtn">admin</span>
+          <span class="login"
+            ><a href="../html/register.html" target="_blank">Log in</a></span
+          >
+        </div>
+
+        <!-- ! admin start -->
+        <div class="admin_wrap">
+          <!-- <button id="showAdminFormBtn">admin</button> -->
+          <form id="adminForm" class="adminFormShow" action="">
+            <input id="adminInp" type="text" placeholder="Password" />
+            <button id="adminBtn" class="button">Enter</button>
+            <button id="adminExitBtn" class="button">Exit</button>
+          </form>
+        </div>
+
+        <!-- ! admin end -->
+      </nav>
+    </div>
+
+    <header class="container">
+      <div class="filter categoryBtns">
+        <button>Action</button>
+        <button>Horror</button>
+        <button>Comedy</button>
+        <button>Cartoon</button>
+        <button>All</button>
+      </div>
+      <div class="search">
+        <input type="text" placeholder="Search New Movies" />
+      </div>
+    </header>
+
+    <section class="container add-block">
+      <form id="mainForm">
+        <div class="allInputs">
+          <input
+            placeholder="Изображение"
+            type="url"
+            id="inpImg"
+            class="inputs"
+          />
+          <input placeholder="Title" type="tel" id="inpTitle" class="inputs" />
+          <input
+            placeholder="Category"
+            type="text"
+            id="inpCategory"
+            class="inputs"
+          />
+          <input placeholder="Year" type="number" id="inpYear" class="inputs" />
+          <button id="btnCreate">Создать</button>
+        </div>
+      </form>
+    </section>
+    <div class="container">
+      <div class="cardsContainer"></div>
+    </div>
+    <div class="pagenatoionBtns">
+      <button id="prevBtn"><</button>
+      <button id="nextBtn">></button>
+    </div>
+
+    <!-- ?  Start Edit modal -->
+    <div id="modal" class="editModal">
+      <button id="closeEditModal">X</button>
+      <!-- <div id="modal-r"> -->
+      <form id="editForm" class="formEdit">
+        <h2>Edit</h2>
+        <input
+          placeholder="Изображение"
+          type="url"
+          id="editInpImg"
+          class="inputs"
+        />
+        <input
+          placeholder="Title"
+          type="tel"
+          id="editInpTitle"
+          class="inputs"
+        />
+        <input
+          placeholder="Category"
+          type="text"
+          id="editInpCategory"
+          class="inputs"
+        />
+        <input
+          placeholder="Year"
+          type="number"
+          id="editInpYear"
+          class="inputs"
+        />
+        <button type="submit">save changes</button>
+      </form>
+    </div>
+    <!-- ?  Finish Edit modal -->
+
+    <!-- ? Start modal -->
+    <div id="detailsModal">
+      <img
+        max-width="500px"
+        min-width="500px"
+        id="modalLeft"
+        src="#"
+        alt="profPic"
+      />
+
+      <div id="modal-r">
+        <button id="closeBtn">X</button>
+        <div id="modalRight">
+          <h2>Name Surname</h2>
+          <h3>1000$</h3>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. A similique
+            debitis ut error tempore dignissimos, odio quas sunt fugiat harum
+            libero in rerum recusandae, modi nesciunt, numquam provident.
+            Eligendi, labore?
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- ? Finish modal -->
+  </body>
+  <script src="../js/main.js"></script>
+</html>
