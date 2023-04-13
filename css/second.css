@@ -74,7 +74,7 @@ nav .second span:first-child:hover {
   height: 35px;
   margin-left: 1em;
   border-radius: 10px;
-  background-color: rgb(48, 145, 48);
+  background-color: rgb(255, 153, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,7 +92,7 @@ nav .second span:first-child:hover {
   height: 35px;
   margin-left: 1em;
   border-radius: 10px;
-  background-color: rgb(48, 145, 48);
+  background-color: rgb(255, 153, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -137,6 +137,7 @@ header div {
   max-width: 1200px;
   width: 100%;
   margin: 0 auto;
+  position: relative;
 }
 .cardsContainer {
   width: 100%;
@@ -183,6 +184,15 @@ header div {
   color: aliceblue;
 }
 
+.card button {
+  width: 150px;
+  padding: 5px;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: rgb(255, 145, 0);
+  color: #fff;
+}
 /* !start each card style */
 
 /* !end each card style */
@@ -231,7 +241,7 @@ header div {
 }
 
 .admin_wrap form {
-  background-color: red;
+  background-color: rgb(74, 121, 190);
   padding: 2em;
   border-radius: 10px;
 }
@@ -243,7 +253,22 @@ header div {
 #adminExitBtn {
   display: none;
 }
-
+#adminInp {
+  border: none;
+  text-align: center;
+  border-radius: 5px;
+}
+#adminBtn {
+  border: none;
+  border-radius: 5px;
+  margin-top: 5px;
+  width: 100px;
+  height: 20px;
+}
+#adminBtn:hover {
+  background-color: green;
+  color: #fff;
+}
 /* ! details */
 
 #detailsModal {
@@ -308,3 +333,53 @@ header div {
 }
 
 /* !END adding new card */
+/*! Edit modal start */
+.editModal {
+  position: fixed;
+  /* z-index: 6; */
+  max-width: 400px;
+  width: 100%;
+  height: 50vh;
+  display: none;
+  background-color: rgba(255, 145, 0, 0.966);
+  border: 2px solid white;
+  /* position: absolute; */
+  left: 35%;
+  top: 20%;
+  border-radius: 10px;
+  text-align: center;
+}
+.formEdit h2 {
+  color: rgb(4, 4, 90);
+}
+.formEdit {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  /* justify-content: center; */
+  align-items: center;
+  margin: auto;
+}
+.formEdit button {
+  width: 150px;
+  padding: 10px;
+  border: none;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: rgb(4, 4, 90);
+  color: #fff;
+}
+.formEdit button:hover {
+  background-color: white;
+  color: rgb(4, 4, 90);
+  border: 2px solid rgb(4, 4, 90);
+  transition: 0.3s;
+}
+.inputs {
+  border: none;
+  padding: 5px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+/* ! edit modal end */
