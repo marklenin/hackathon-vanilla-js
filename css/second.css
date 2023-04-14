@@ -16,41 +16,18 @@ nav {
   border-bottom: 1px solid rgba(128, 128, 128, 0.445);
   margin-bottom: 100px;
   position: relative;
+  flex-wrap: wrap;
 }
 
 nav .first {
   display: flex;
   align-items: center;
-  width: 75%;
+  /* width: 53%; */
   justify-content: space-between;
-}
-
-nav ul {
-  display: flex;
-  justify-content: space-between;
-  width: 30%;
-  font-size: 20px;
-}
-nav ul li {
-  list-style: none;
-  transition: 0.3s;
-  background-color: transparent;
-  border-radius: 5px;
-  padding: 0.2em 0.5em;
-  /* padding-bottom: 100px; */
-}
-
-nav ul li:hover {
-  background-color: rgba(202, 200, 200, 0.705);
-  /* font-size: 0.9em; */
-}
-a {
-  text-decoration: none;
-  color: white;
 }
 
 nav .second {
-  width: 15%;
+  /* width: 15%; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -62,6 +39,7 @@ nav .second span {
   border-radius: 5px;
   padding: 0.2em 0.5em;
   transition: 0.3s;
+  min-width: 25px;
 }
 
 nav .second span:first-child:hover {
@@ -108,6 +86,7 @@ header {
   display: flex;
   justify-content: space-between;
   margin-top: 100px;
+  flex-wrap: wrap;
 }
 
 header h2 {
@@ -118,7 +97,7 @@ header h2 {
 
 header div {
   display: flex;
-  width: 45%;
+  /* width: 45%; */
   justify-content: space-between;
 }
 
@@ -127,7 +106,7 @@ header div {
   justify-content: flex-end;
 }
 .search input {
-  width: 60%;
+  /* width: 60%; */
   border-radius: 5px;
   padding: 0.2em 0.5em;
   font-size: 18px;
@@ -156,6 +135,12 @@ header div {
   text-align: center;
   margin: 20px;
   color: rgb(25, 24, 24);
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+.card:hover {
+  background-color: rgba(74, 120, 190, 0.363);
 }
 
 .card img {
@@ -204,7 +189,7 @@ header div {
 }
 
 .filter {
-  width: 35%;
+  /* width: 35%; */
 }
 .filter button {
   color: white;
@@ -273,15 +258,18 @@ header div {
 
 #detailsModal {
   display: none;
-  width: 1000px;
-  height: 700px;
-  max-width: 70%;
-  margin: 25px auto;
+  width: 100%;
+  /* height: 700px; */
+  /* max-width: 70%; */
+  /* margin: 25px auto; */
+  left: 50%;
+  translate: -50%;
   border: 1px solid #998e78;
   position: absolute;
-  top: 10%;
-  left: 15%;
+  /* top: 10%;
+  left: 15%; */
   background-color: #fff;
+  justify-content: center;
 }
 
 #modalLeft {
@@ -303,13 +291,13 @@ header div {
 }
 
 #modalRight h2 {
-  font-size: 55px;
+  font-size: 3em;
   margin: 0px;
 }
 
 #modalRight h3 {
   font-weight: 500;
-  font-size: 40px;
+  font-size: 2.5em;
   color: #998e78;
   margin: 15px 0;
 }
@@ -319,17 +307,31 @@ header div {
   font-size: 20px;
 }
 
+#iframe {
+  width: 100%;
+}
+
 /* !START adding new card */
 #mainForm {
-  display: flex;
+  display: none;
   flex-wrap: wrap;
   width: 100%;
+  justify-content: center;
 }
 
 .allInputs {
   padding: 20px 10px;
   text-align: center;
-  width: 100%;
+  width: 75%;
+  background-color: rgb(255, 145, 0);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin: 3em 0;
 }
 
 /* !END adding new card */
@@ -339,12 +341,14 @@ header div {
   /* z-index: 6; */
   max-width: 400px;
   width: 100%;
-  height: 50vh;
+  /* height: 50vh; */
   display: none;
   background-color: rgba(255, 145, 0, 0.966);
   border: 2px solid white;
   /* position: absolute; */
-  left: 35%;
+  left: 50%;
+  translate: -50%;
+
   top: 20%;
   border-radius: 10px;
   text-align: center;
@@ -359,6 +363,7 @@ header div {
   /* justify-content: center; */
   align-items: center;
   margin: auto;
+  gap: 1em;
 }
 .formEdit button {
   width: 150px;
@@ -379,7 +384,73 @@ header div {
   border: none;
   padding: 5px;
   border-radius: 10px;
-  margin-bottom: 15px;
   text-align: center;
 }
 /* ! edit modal end */
+
+/* ! START pagination btns */
+.pagenatoionBtns {
+  margin: 0 auto;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 2em;
+}
+
+.pagenatoionBtns button {
+  height: 50px;
+  width: 50px;
+  font-size: 20px;
+  border: none;
+  transition: 0.2s;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.pagenatoionBtns button:hover {
+  background-color: gray;
+  color: white;
+}
+/* ! END pagination btns */
+
+/* ! filter */
+
+.categoryBtnActive {
+  background-color: black !important;
+  color: red;
+}
+
+@media screen and (max-width: 480px) {
+  .cardsContainer {
+    justify-content: center;
+  }
+  header {
+    justify-content: center;
+    gap: 1em;
+  }
+  .admin_wrap form {
+    top: -20px;
+    right: 5px;
+  }
+
+  .allInputs {
+    justify-content: center;
+    margin: 3em 0;
+    left: 50%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .formEdit {
+    gap: 1em;
+  }
+  .editModal {
+    height: auto;
+    max-width: 215px;
+  }
+  .admin_wrap form {
+    background-color: rgb(74, 121, 190);
+    padding: 0.5em;
+    border-radius: 10px;
+    top: 0;
+  }
+}

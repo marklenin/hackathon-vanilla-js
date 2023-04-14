@@ -21,6 +21,7 @@ let detailsImage = document.querySelector("#modalLeft");
 let detailsName = document.querySelector("#modalRight h2");
 let detailsPrice = document.querySelector("#modalRight h3");
 let detailsSkills = document.querySelector("#modalRight p");
+let iframe = document.getElementById("iframe");
 
 // ! Edit
 // let editBtns = document.querySelector(".btnEdit");
@@ -107,13 +108,14 @@ async function readProfile(search = "All") {
   data.forEach((elem) => {
     cardsContainer.innerHTML += `
       <div class="card">
-      <img " src="${elem.Poster}" alt="${elem.Title}" onclick="showDetailsModal(${elem.id})"/>
+      <img " src="${elem.Poster}" alt="${elem.Title}" onclick="showDetailsModal(${elem.id})" />
       <h4>${elem.Title}</h4>
       <p>${elem.Type}</p>
       <p>${elem.Year}</p>
           </div>
       `;
   });
+  mainForm.style.display = "none";
   countPages();
 }
 
@@ -125,8 +127,8 @@ let categoryBtns = document.querySelectorAll(".categoryBtns button");
 
 categoryBtns.forEach((elem) => {
   elem.addEventListener("click", () => {
+    elem.classList.toggle("categoryBtnActive");
     filterFunction(elem.innerText);
-    elem.classList.toggle("hoverFilter");
   });
 });
 
@@ -140,8 +142,8 @@ async function filterFunction(search = "All") {
   cardsContainer.innerHTML = "";
   data.forEach((elem) => {
     cardsContainer.innerHTML += `
-        <div class="card">
-        <img " src="${elem.Poster}" alt="${elem.Title}" onclick="showDetailsModal(${elem.id})"/>
+        <div class="card" >
+        <img " src="${elem.Poster}" alt="${elem.Title}" onclick="showDetailsModal(${elem.id})" />
         <h4>${elem.Title}</h4>
         <p>${elem.Type}</p>
         <p>${elem.Year}</p>
@@ -150,7 +152,6 @@ async function filterFunction(search = "All") {
   });
   countPages();
 }
-
 // ! END FILTER
 
 //! SEARCH FUNCTION
@@ -168,8 +169,8 @@ async function searchFunction() {
     let year = elem.Year;
     if (title.includes(ser) || year.includes(ser)) {
       //   container.innerHTML = "";
-      cardsContainer.innerHTML += `<div class="card">
-      <img " src="${elem.Poster}" alt="${elem.Title}" onclick="showDetailsModal(${elem.id})"/>
+      cardsContainer.innerHTML += `<div class="card" >
+      <img " src="${elem.Poster}" alt="${elem.Title}" onclick="showDetailsModal(${elem.id})" />
             <h4>${elem.Title}</h4>
             <p>${elem.Type}</p>
             <p>${elem.Year}</p>
@@ -190,8 +191,8 @@ async function adminReadProfile(search = "") {
   cardsContainer.innerHTML = "";
   data.forEach((elem) => {
     cardsContainer.innerHTML += `
-      <div class="card">
-          <img " src="${elem.Poster}" alt="${elem.Title}" onclick="showDetailsModal()"/>
+      <div class="card" >
+          <img " src="${elem.Poster}" alt="${elem.Title}" onclick="showDetailsModal(${elem.id})" />
           <h4>${elem.Title}</h4>
           <p>${elem.Type}</p>
           <p>${elem.Year}</p>
@@ -200,6 +201,7 @@ async function adminReadProfile(search = "") {
       </div>
     `;
   });
+  mainForm.style.display = "flex";
   countPages();
 }
 
@@ -230,18 +232,18 @@ prevBtn.addEventListener("click", () => {
 });
 
 nextBtn.addEventListener("click", () => {
-  if (currentPage > pageLength) {
+  if (currentPage >= pageLength) {
     console.log("true");
     return;
   }
   //   if (currentPage <= 1) return;
   console.log("next");
-  currentPage++;
   if (JSON.parse(localStorage.getItem("isAdmin"))) {
     adminReadProfile();
   } else {
     readProfile();
   }
+  currentPage++;
 });
 
 //! END PAGINATION
@@ -352,12 +354,34 @@ async function showDetailsModal(id) {
   detailsModal.style.display = "flex";
   let res = await fetch(`${API}/${id}`);
   let data = await res.json();
-  detailsImage.src = data.Poster;
+  // detailsImage.src = data.Poster;
   detailsName.innerText = data.Title;
   detailsPrice.innerText = data.Type;
   detailsSkills.innerText = data.Year;
+  iframe.src = data.src;
 }
 
 closeBtnDetailsModal.addEventListener("click", () => {
   detailsModal.style.display = "none";
 });
+
+//!start register
+let registerApi = "http://localhost:8000/register";
+let registerNameContainer = document.querySelector(".registerNameContainer");
+
+async function takeRegisteredName() {
+  let res = await fetch(registerApi);
+  let data = await res.json();
+  registerNameContainer.innerHTML = `<p>${
+    data[data.length - 1].name !== null ? data[data.length - 1].name : ""
+  }</p> <button onclick="exitRegistration()">Log Out</button>`;
+}
+takeRegisteredName();
+
+async function exitRegistration(char) {
+  await fetch(`${registerApi}/1`, {
+    method: "DELETE",
+  });
+  registerNameContainer.innerHTML = "";
+  alert("You exit your account");
+}
